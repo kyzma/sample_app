@@ -3,22 +3,20 @@ require 'rails_helper'
 describe "Static pages" do
 
   describe "Home page" do
+  before { visit root_path }
 
-    it "should have the h1 'Sample App'" do
-      visit root_path
-      expect(page).to have_content('Sample App')
-    end
-
-    it "should have the base title" do
-      visit root_path
-      expect(page).to have_title("Ruby on Rails Tutorial Sample App")
-    end
-
-    it "should not have a custom page title" do
-      visit root_path
-      expect(page).not_to have_title('| Home')
-    end
+  it "should have the content 'Sample App'" do
+    expect(page).to have_content('Sample App')
   end
+
+  it "should have the base title" do
+    expect(page).to have_title("Ruby on Rails Tutorial Sample App")
+  end
+
+  it "should not have a custom page title" do
+    expect(page).not_to have_title('| Home')
+  end
+end
 
   describe "Help page" do
 
