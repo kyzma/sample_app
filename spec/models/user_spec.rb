@@ -54,7 +54,7 @@ describe "when name is too long" do
 
         it { should_not be_valid }
       end
-      
+
       subject { @user }
   describe "when email address is already taken" do
     before do
@@ -65,6 +65,15 @@ describe "when name is too long" do
 
     it { should_not be_valid }
   end
+  before do
+    @user = User.new(name: "Example User", email: "user@example.com")
+  end
+
+  subject { @user }
+
+  it { should respond_to(:name) }
+  it { should respond_to(:email) }
+  it { should respond_to(:password_digest) }
 
 
 end
