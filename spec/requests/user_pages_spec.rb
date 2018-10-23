@@ -1,15 +1,15 @@
 require 'rails_helper'
-def full_title(page_title)
-  base_title = "Ruby on Rails Tutorial Sample App"
-  if page_title.empty?
-    base_title
-  else
-    "#{base_title} | #{page_title}"
-  end
-end
 describe "User pages" do
 
   subject { page }
+
+  describe "profile page" do
+    let(:user) { FactoryGirl.create(:user) }
+    before { visit user_path(user) }
+
+    it { should have_content(user.name) }
+    it { should have_title(user.name) }
+  end
 
   describe "signup page" do
     before { visit signup_path }
@@ -17,14 +17,4 @@ describe "User pages" do
     it { should have_content('Sign up') }
     it { should have_title(full_title('Sign up')) }
   end
-  describe "profile page" do
-    # Replace with code to make a user variable
-    before { visit user_path(user) }
-
-    it { should have_content(user.name) }
-    it { should have_title(user.name) }
-  end
-
-
-
 end
