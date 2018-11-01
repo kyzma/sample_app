@@ -5,8 +5,11 @@ describe "Authentication" do
 
   describe "signin page" do
     before { visit signin_path }
+    describe "with invalid information" do
+      before { click_button "Sign in" }
 
     it { should have_content('Sign in') }
     it { should have_title('Sign in') }
   end
+end
 end
