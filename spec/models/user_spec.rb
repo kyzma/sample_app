@@ -112,7 +112,8 @@ end
     end
   describe "remember token" do
     before { @user.save }
-    its(:remember_token) { should_not be_blank }
+    #its(:remember_token) { should_not be_blank }
+    it { expect(@user.remember_token).not_to be_blank }
   end
 
     #describe "with invalid password" do
