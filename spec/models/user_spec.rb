@@ -110,6 +110,10 @@ end
     describe "with valid password" do
       it { should eq found_user.authenticate(@user.password) }
     end
+  describe "remember token" do
+    before { @user.save }
+    its(:remember_token) { should_not be_blank }
+  end
 
     #describe "with invalid password" do
     #  let(:user_for_invalid_password) { found_user.authenticate("invalid") }
