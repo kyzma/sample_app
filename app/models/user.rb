@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_mane :microposts
+  has_many :microposts, dependent: :destroy
   before_save { email.downcase! }
   #before_save { self.email = email.downcase }
   before_save { self.email = email.downcase }
